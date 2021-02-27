@@ -32,7 +32,7 @@
       </div>
       <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="minus" name="example_minus" checked form="generate">
-        <label class="form-check-label" for="minus">Вычетание?</label>
+        <label class="form-check-label" for="minus">Вычитание?</label>
       </div>
       <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="itemWhy" name="example_itemWhy" checked form="generate">

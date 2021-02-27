@@ -37,8 +37,8 @@ class createExample extends Command
      */
     public function handle()
     {
-        $max = 100;
-        for($i=0;$i<=2000000;$i++) {
+        $max = 1000;
+        for($i=0;$i<=200;$i++) {
           $operation = rand(0, 1);
           $itemWhy = rand(0, 2);
           //0 = +
