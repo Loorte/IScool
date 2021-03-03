@@ -83,22 +83,17 @@ class createExample extends Command
             $display .= $itemWhy==2?'▢':$result;
           }
 
-          try {
+
+          if(is_null(\App\Models\Example::where('display', $display)->first()))
             \App\Models\Example::create([
-              'operation' => $operation,
-              'param1' => $param1,
-              'param2' => $param2,
-              'result' => $result,
-              'itemWhy' => $itemWhy,
-              'display' => $display
+                'operation' => $operation,
+                'param1' => $param1,
+                'param2' => $param2,
+                'result' => $result,
+                'itemWhy' => $itemWhy,
+                'display' => $display
             ]);
             $this->info($display);
-          } catch (\Exception $e) {
-            $this->error("Пропуск ");
           }
-
-
-
-        }
     }
 }
