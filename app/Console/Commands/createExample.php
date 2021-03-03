@@ -94,6 +94,8 @@ class createExample extends Command
                 'display' => $display
             ]);
             $this->info($display);
+          } else {
+            $this->error("Пропуск");
           }
     }
 }
