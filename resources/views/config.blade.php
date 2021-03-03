@@ -12,7 +12,7 @@
   </head>
   <body class="p-5">
     <h1>Всем привет!</h1>
-    <form id="generate" action="{{ route('generate::example1') }}" method="post">
+    <form id="generate" action="{{ route('generate::example') }}" method="post">
       @csrf
     </form>
     <div class="row">
@@ -21,7 +21,7 @@
         <input type="number" class="form-control" name="example_count" id="count" placeholder="100" value=100 form="generate">
       </div>
       <div class="col">
-        <label for="max" class="form-label">Максимальный результат</label>
+        <label for="max" class="form-label">Максимальное число</label>
         <input type="number" class="form-control" name="example_max" id="max"  value=20 form="generate">
       </div>
     </div>
@@ -35,8 +35,21 @@
         <label class="form-check-label" for="minus">Вычитание?</label>
       </div>
       <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="multiply" name="example_multiply"  form="generate">
+        <label class="form-check-label" for="multiply">Умножение?</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="division" name="example_division" form="generate">
+        <label class="form-check-label" for="division">Деление?</label>
+      </div>
+      <hr>
+      <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="itemWhy" name="example_itemWhy" checked form="generate">
         <label class="form-check-label" for="itemWhy">Какое число пропущено?</label>
+      </div>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="notNull" name="example_notNull" form="generate">
+        <label class="form-check-label" for="notNull">Исключить действия с нулём?</label>
       </div>
     </div>
     <div class="row p-3">

@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::name('generate::')->prefix('generate')->group(function(){
-  Route::name('example1')->any('/', function(Request $request){
+  Route::name('example2')->any('/example2', function(Request $request){
     $Examples = \App\Models\Example::where('result', '>=', 0);
 
 
@@ -56,5 +56,75 @@ Route::name('generate::')->prefix('generate')->group(function(){
     return view('grid', [
       'Examples' => $Examples->take($request->example_count ?? 10)->inRandomOrder()->get()
     ]);
+  });
+  Route::name('example')->any('/', function(Request $request){
+    $Examples = \App\Models\Example::where('result', '>=', 0);
+
+    if(isset($request->example_notNull)) {
+      $Examples = $Examples->where([
+        ['param1', '!=', 0],
+        ['param2', '!=', 0],
+      ]);
+    }
+
+    $Or = false;
+    if(isset($request->example_plus)) {
+      $WhereOpt = [
+        ['operation', '=', 0],
+        ['result', '<=', $request->example_max],
+        ['itemWhy', !isset($request->example_itemWhy)?'=':'<=', 2]
+      ];
+      $Or ?
+        $Examples = $Examples->orWhere($WhereOpt)
+        :
+        $Examples = $Examples->where($WhereOpt);
+      $Or = true;
+    }
+
+    if(isset($request->example_minus)) {
+      $WhereOpt = [
+        ['operation', '=', 1],
+        ['param1', '<=', $request->example_max],
+        ['itemWhy', !isset($request->example_itemWhy)?'=':'<=', 2]
+      ];
+      $Or ?
+        $Examples = $Examples->orWhere($WhereOpt)
+        :
+        $Examples = $Examples->where($WhereOpt);
+      $Or = true;
+    }
+
+    if(isset($request->example_multiply)) {
+      $WhereOpt = [
+        ['operation', '=', 2],
+        ['result', '<=', $request->example_max],
+        ['itemWhy', !isset($request->example_itemWhy)?'=':'<=', 2]
+      ];
+      $Or ?
+        $Examples = $Examples->orWhere($WhereOpt)
+        :
+        $Examples = $Examples->where($WhereOpt);
+      $Or = true;
+    }
+
+    if(isset($request->example_division)) {
+      $WhereOpt = [
+        ['operation', '=', 3],
+        ['param1', '<=', $request->example_max],
+        ['itemWhy', !isset($request->example_itemWhy)?'=':'<=', 2]
+      ];
+      $Or ?
+        $Examples = $Examples->orWhere($WhereOpt)
+        :
+        $Examples = $Examples->where($WhereOpt);
+      $Or = true;
+    }
+
+
+
+    return view('grid', [
+      'Examples' => $Examples->whereNotNull('display')->take($request->example_count ?? 100)->inRandomOrder()->get()
+    ]);
+
   });
 });
