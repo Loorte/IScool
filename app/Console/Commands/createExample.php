@@ -84,7 +84,7 @@ class createExample extends Command
           }
 
 
-          if(is_null(\App\Models\Example::where('display', $display)->first()))
+          if(is_null(\App\Models\Example::where('display', $display)->first())) {
             \App\Models\Example::create([
                 'operation' => $operation,
                 'param1' => $param1,
