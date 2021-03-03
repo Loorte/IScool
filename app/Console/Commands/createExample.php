@@ -37,9 +37,9 @@ class createExample extends Command
      */
     public function handle()
     {
-        $max = 1000;
-        $min = 1;
-        for($i=0;$i<=20000;$i++) {
+        $max = env('MAX_VALUE');
+        $min = 0;
+        for($i=0;$i<=env('COUNT_EXAMPLE');$i++) {
           $operation = rand(0, 3);
           $itemWhy = rand(0, 2);
           //0 = +
