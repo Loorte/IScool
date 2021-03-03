@@ -97,5 +97,6 @@ class createExample extends Command
           } else {
             $this->error("Пропуск");
           }
+        }
     }
 }
