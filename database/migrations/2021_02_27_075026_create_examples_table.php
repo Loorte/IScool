@@ -21,7 +21,7 @@ class CreateExamplesTable extends Migration
             $table->integer('param2')->nullable()->default(0);
             $table->integer('result')->nullable()->default(0);
             $table->integer('itemWhy')->nullable()->default(2);
-            $table->text('display')->nullable()->unique();
+            $table->text('view')->nullable()->unique();
         });
     }
 

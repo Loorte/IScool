@@ -90,7 +90,7 @@ class createExample extends Command
               'param2' => $param2,
               'result' => $result,
               'itemWhy' => $itemWhy,
-              'display' => $display
+              'view' => $display
             ]);
             $this->info($display);
           } catch (\Exception $e) {

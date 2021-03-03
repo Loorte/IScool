@@ -14,7 +14,7 @@
       <div class="row">
         @foreach($Examples as $Example)
           <div class="col-3" style="height: 40px; font-size: 30px;">
-            {{ $Example->display }}
+            {{ $Example->view }}
           </div>
         @endforeach
       </div>
