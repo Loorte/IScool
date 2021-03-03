@@ -39,7 +39,7 @@ class createExample extends Command
     {
         $max = 1000;
         $min = 0;
-        for($i=0;$i<=20000;$i++) {
+        for($i=0;$i<=2000;$i++) {
           $operation = rand(0, 3);
           $itemWhy = rand(0, 2);
           //0 = +
