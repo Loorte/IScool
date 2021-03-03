@@ -38,24 +38,47 @@ class createExample extends Command
     public function handle()
     {
         $max = 1000;
-        for($i=0;$i<=200;$i++) {
-          $operation = rand(0, 1);
+        $min = 0;
+        for($i=0;$i<=20000;$i++) {
+          $operation = rand(0, 3);
           $itemWhy = rand(0, 2);
           //0 = +
           //1 = -
+          //2 = ×
+          //3 = ÷
           $display = null;
-          if($operation == 0) {
-            $result = rand(0, $max);
-            $param1 = rand(0, $result);
+          if($operation == 0) { //+
+            $result = rand($min, $max);
+            $param1 = rand($min, $result);
             $param2 = $result - $param1;
             $display = $itemWhy==0?'▢+':$param1.'+';
             $display .= $itemWhy==1?'▢=':$param2.'=';
             $display .= $itemWhy==2?'▢':$result;
-          } elseif ($operation == 1) {
-            $param1 = rand(0, $max);
-            $param2 = rand(0, $param1);
+          } elseif ($operation == 1) { //-
+            $param1 = rand($min, $max);
+            $param2 = rand($min, $param1);
             $result = $param1-$param2;
             $display = $itemWhy==0?'▢-':$param1.'-';
+            $display .= $itemWhy==1?'▢=':$param2.'=';
+            $display .= $itemWhy==2?'▢':$result;
+          } elseif ($operation == 2) { //×
+            $result = rand($min, $max);
+            $param1 = (($tempParam = rand($min, $result))==0 ? 1 : $tempParam);
+            while(($result % $param1) !=0) {
+              $param1 = rand(($min==0?1:$min), $result);
+              $param2 = $result/$param1;
+            }
+            $display = $itemWhy==0?'▢×':$param1.'×';
+            $display .= $itemWhy==1?'▢=':$param2.'=';
+            $display .= $itemWhy==2?'▢':$result;
+          } elseif ($operation == 3) { //÷
+            $param1 = rand($min, $max);
+            $param2 = (($tempParam = rand($min, $param1))==0 ? 1 : $tempParam);
+            while(($param1 % $param2) !=0) {
+              $param2 = (($tempParam = rand($min, $param1))==0 ? 1 : $tempParam);
+              $result = $param1/$param2;
+            }
+            $display = $itemWhy==0?'▢÷':$param1.'÷';
             $display .= $itemWhy==1?'▢=':$param2.'=';
             $display .= $itemWhy==2?'▢':$result;
           }
