@@ -14,6 +14,6 @@ class Example extends Model {
     'param2',
     'result',
     'itemWhy',
-    'view'
+    'display'
   ];
 }
