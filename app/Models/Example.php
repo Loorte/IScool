@@ -16,4 +16,13 @@ class Example extends Model {
     'itemWhy',
     'display'
   ];
+
+  public static function getXDisplay($value) {
+    $xDisplay = '';
+    for($i=0;$i<=strlen($value)-1;$i++) {
+      $xDisplay .= '▢';
+    }
+
+    return $xDisplay;
+  }
 }

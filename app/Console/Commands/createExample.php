@@ -48,42 +48,45 @@ class createExample extends Command
           //3 = ÷
           $display = null;
           if($operation == 0) { //+
+            $function = '+';
             $result = rand($min, $max);
             $param1 = rand($min, $result);
             $param2 = $result - $param1;
-            $display = $itemWhy==0?'▢+':$param1.'+';
-            $display .= $itemWhy==1?'▢=':$param2.'=';
-            $display .= $itemWhy==2?'▢':$result;
           } elseif ($operation == 1) { //-
+            $function = '-';
             $param1 = rand($min, $max);
             $param2 = rand($min, $param1);
             $result = $param1-$param2;
-            $display = $itemWhy==0?'▢-':$param1.'-';
+            /*$display = $itemWhy==0?'▢-':$param1.'-';
             $display .= $itemWhy==1?'▢=':$param2.'=';
-            $display .= $itemWhy==2?'▢':$result;
+            $display .= $itemWhy==2?'▢':$result;*/
           } elseif ($operation == 2) { //×
+            $function = '×';
             $result = rand(1, $max);
             $param1 = rand(1, $result);
             while(($result % $param1) !=0) {
               $param1 = rand(1, $result);
             }
             $param2 = $result/$param1;
-            $display = $itemWhy==0?'▢×':$param1.'×';
+            /*$display = $itemWhy==0?'▢×':$param1.'×';
             $display .= $itemWhy==1?'▢=':$param2.'=';
-            $display .= $itemWhy==2?'▢':$result;
+            $display .= $itemWhy==2?'▢':$result;*/
           } elseif ($operation == 3) { //÷
+            $function = '÷';
             $param1 = rand(1, $max);
             $param2 = rand(1, $param1);
             while(($param1 % $param2) !=0) {
               $param2 = rand(1, $param1);
             }
             $result = $param1/$param2;
-            $display = $itemWhy==0?'▢÷':$param1.'÷';
+            /*$display = $itemWhy==0?'▢÷':$param1.'÷';
             $display .= $itemWhy==1?'▢=':$param2.'=';
-            $display .= $itemWhy==2?'▢':$result;
+            $display .= $itemWhy==2?'▢':$result;*/
           }
 
-
+          $display = $itemWhy==0?\App\Models\Example::getXDisplay($param1).$function:$param1.$function;
+          $display .= $itemWhy==1?\App\Models\Example::getXDisplay($param2).'=':$param2.'=';
+          $display .= $itemWhy==2?\App\Models\Example::getXDisplay($result):$result;
           if(is_null(\App\Models\Example::where('display', $display)->first())) {
             \App\Models\Example::create([
                 'operation' => $operation,
