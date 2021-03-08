@@ -13,7 +13,7 @@
     <div class="container" style="min-width: 100%;">
       <div class="row">
         @foreach($Examples as $Example)
-          <div class="col-3" style="height: 40px; font-size: 30px;">
+          <div class="col-3" style="height: 40px; font-size: 20px;">
             {{ $Example->display }}
           </div>
         @endforeach
