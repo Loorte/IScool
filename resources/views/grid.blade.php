@@ -38,7 +38,7 @@
             $operation  = false;
           ?>
           <div class="col-3" style="height: 40px; font-size: 20px;">
-            <?php
+            <?php 
               $Operations  = null;
               if(request()->input('comparison_plus'))
                 $Operations[] = 0;

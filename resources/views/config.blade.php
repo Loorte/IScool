@@ -53,7 +53,7 @@
       </div>
     </div>
     <hr>
-    <h4>Сравнения</h4>
+    <h4>Сравнения </h4>
     <div class="row">
       <div class="col">
         <label for="comparison_count" class="form-label">Количество примеров <i><b>примерно 100 на лист</b></i></label>
@@ -61,7 +61,7 @@
       </div>
       <div class="col">
         <label for="comparison_max" class="form-label">Максимальное число</label>
-        <input type="number" class="form-control c"  name="comparison_max" id="comparison_max"  value=20 form="generate">
+        <input type="number" class="form-control"  name="comparison_max" id="comparison_max"  value=20 form="generate">
       </div>
     </div>
     <div class="row p-3">

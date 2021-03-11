@@ -38,7 +38,7 @@ class Example extends Model {
     ->where('param1', '<=', $Result)
     ->where('param2', '<=', $Result)
     ->where('param1', '>=', $Null)
-    ->where('param2', '>=', $Null)
+    ->where('param2', '>=', $Null )
     ->inRandomOrder()
     ->first();
 
