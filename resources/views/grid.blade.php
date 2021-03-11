@@ -11,6 +11,7 @@
   </head>
   <body>
     <div class="container" style="min-width: 100%;">
+      <h3>Вычесления</h3>
       <div class="row">
         @foreach($Examples as $Example)
           <div class="col-3" style="height: 40px; font-size: 20px;">
@@ -18,6 +19,45 @@
           </div>
         @endforeach
       </div>
+      @if( request()->input('comparisonOfNumbers') || request()->input('comparisonOfDevs') )
+        <h3>Сравнение</h3>
+        <div class="row">
+        @for($i=0; $i<=(request()->input('comparison_count')-1);$i++)
+          <?php
+          //comparison_notNull
+          $param1 = rand(request()->input('comparison_notNull')?1:0, request()->input('comparison_max'));
+          $param2 = rand(request()->input('comparison_notNull')?1:0, request()->input('comparison_max'));
+
+          if(request()->input('comparisonOfNumbers') && request()->input('comparisonOfDevs'))
+            $operation = rand(1, 2);
+          else if(!request()->input('comparisonOfNumbers') && request()->input('comparisonOfDevs'))
+            $operation = rand(2, 2);
+          else if(request()->input('comparisonOfNumbers') && !request()->input('comparisonOfDevs'))
+            $operation = rand(1, 1);
+          else
+            $operation  = false;
+          ?>
+          <div class="col-3" style="height: 40px; font-size: 20px;">
+            <?php
+              $Operations  = null;
+              if(request()->input('comparison_plus'))
+                $Operations[] = 0;
+              if(request()->input('comparison_minus'))
+                $Operations[] = 1;
+              if(request()->input('comparison_multiply'))
+                $Operations[] = 2;
+              if(request()->input('comparison_division'))
+                $Operations[] = 3;
+            ?>
+            @if( $operation == 1 )
+              {{ $param1 }} ▢ {{ $param2 }}
+            @elseif( $operation ==2  && !is_null($Operations))
+              {{ \App\Models\Example::getExample($Operations, $param1, request()->input('comparison_notNull')?1:0) }} ▢ {{ \App\Models\Example::getExample($Operations, $param2, request()->input('comparison_notNull')?1:0) }}
+            @endif
+          </div>
+        @endfor
+      </div>
+      @endif
     </div>
 
 

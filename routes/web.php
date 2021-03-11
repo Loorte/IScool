@@ -120,8 +120,6 @@ Route::name('generate::')->prefix('generate')->group(function(){
       $Or = true;
     }
 
-
-
     return view('grid', [
       'Examples' => $Examples->whereNotNull('display')->take($request->example_count ?? 100)->inRandomOrder()->get()
     ]);
