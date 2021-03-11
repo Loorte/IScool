@@ -61,7 +61,7 @@
       </div>
       <div class="col">
         <label for="comparison_max" class="form-label">Максимальное число</label>
-        <input type="number" class="form-control" name="comparison_max" id="comparison_max"  value=20 form="generate">
+        <input type="number" class="form-control c"  name="comparison_max" id="comparison_max"  value=20 form="generate">
       </div>
     </div>
     <div class="row p-3">
