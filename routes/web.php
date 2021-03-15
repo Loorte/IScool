@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('config');
+    return view('generateConfig');
 });
 
 Route::name('generate::')->prefix('generate')->group(function(){
